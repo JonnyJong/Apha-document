@@ -1,0 +1,71 @@
+nav.page_switch
+  margin-top $block-margin
+  width 100%
+  .page_switch
+    display flex
+    gap $block-margin
+    justify-content hexo-config('page_switch_btn_style') ? convert(hexo-config('page_switch_btn_style')) : center
+    .extend
+    .page-number
+      display inline-block
+      height 26px
+      width 26px
+      color var(--text-color-r)
+      background-color var(--bg-color)
+      line-height 26px
+      text-align center
+      overflow hidden
+      border-radius $border-radius
+      transition all 0.1s
+    .extend:hover
+    .page-number:hover
+      box-shadow var(--b-shadow-lite)
+      background-color var(--main-color-nbgh)
+
+    .page-number.current
+      background-color var(--main-color)
+      box-shadow var(--b-shadow)
+    .page-number.current:hover
+      cursor default
+    
+    .extend
+      line-height 28px
+
+  // 文章页中
+  .post_switch
+    display flex
+    gap $block-margin
+    .switch_item
+      display block
+      width 100%
+      height 100%
+      border-radius $border-radius
+      transition all 0.5s
+      a
+        display block
+        min-height 120px
+        height max-content
+        border-radius $border-radius
+        padding $block-padding
+        background #fff8
+        transition all 0.5s
+        color var(--text-color-r)
+        text-shadow var(--b-shadow-lite)
+        .post_title
+          font-size 20px
+          transition .1s
+      a:hover
+        background #fffc
+        .post_title
+          font-size 22px
+          color var(--main-color)
+      .prev_post
+        text-align right
+    .switch_item:hover
+      box-shadow var(--b-shadow)
+[prefers-color-scheme="dark"]
+  nav.page_switch .post_switch .switch_item
+    a
+      background #0008
+    a:hover
+      background #000c

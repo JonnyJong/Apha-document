@@ -1,0 +1,25 @@
+{
+  "name": "hexo-theme-apha",
+  "version": "0.0.3",
+  "build": "3.100",
+  "description": "A hexo theme.",
+  "author": "jonnyjonny",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonnyJong/hexo-theme-apha.git"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "hexo-theme-apha",
+    "apha"
+  ],
+  "bugs": {
+    "url": "https://github.com/JonnyJong/hexo-theme-apha/issues"
+  },
+  "homepage": "https://github.com/JonnyJong/hexo-theme-apha"
+}

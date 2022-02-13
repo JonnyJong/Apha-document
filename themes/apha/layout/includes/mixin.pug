@@ -1,0 +1,54 @@
+mixin post_item(item)
+  .post_item
+    a.post_link(href=url_for(item.path))
+      if item.cover
+        img.post_cover(src=item.cover alt=item.title)
+      .post_info
+        p.post_title=(item.title ? item.title : _p('post_item.notitle') )
+        time(datetime=date_xml(item.date))= date(item.date)
+
+mixin page_info(page, type, other_info)
+  case type
+    when "archive"
+      - var ifCover = theme.archive.cover ? "true" : "false"
+      .page_info(cover=ifCover style=ifCover?("background:url("+url_for(theme.archive.cover)+");background-position:center;background-size:cover;"):"")
+    when "page"
+      - var ifCover = page.cover ? "true" : "false"
+      .page_info(cover=ifCover style=ifCover?("background:url("+url_for(page.cover)+");background-position:center;background-size:cover;"):"")
+        .inner_info
+          if page.link
+            a.page_title(href=page.link style="display:block;width:max-content;")
+              i(class=icon_link style="font-size:24px;")
+              h1.page_title=page.title ? page.title : _p('post_item.notitle')
+          else
+            h1.page_title=page.title ? page.title : _p('post_item.notitle')
+          if other_info && (page.date || page.updated || theme.third_party.busuanzi || theme.page.wordcount || (page.categories.data.length > 0) || (page.tags.data.length > 0))
+            .other_info
+              if page.date
+                i(class=icon_date)
+                time.marginR(datetime=page.date.toJSON())= _p('post_item.date') + ' ' + date(page.date, date_format)
+              if page.updated
+                i(class=icon_updated)
+                time.marginR(datetime=page.updated.toJSON())= _p('post_item.updated') + ' ' + date(page.updated, date_format)
+              if theme.third_party.busuanzi
+                i(class=icon_read)
+                span= _p('post_item.read') + ' '
+                span.marginR#busuanzi_value_page_pv
+              if theme.page.wordcount
+                i(class=icon_wordcount)
+                span=_p('post_item.wordcount_before') + wordcount(page.content) + _p('post_item.wordcount_after')
+              if (page.categories.data.length > 0)
+                .line_warp_h
+                i(class=icon_categorie)
+                each cate, count in page.categories.data
+                  a.page_cate(href=url_for(cate.path))=cate.name
+                  if (count < page.categories.data.length - 1)
+                    span='/'
+              if (page.tags.data.length > 0)
+                .line_warp_h
+                if (page.tags.data.length > 1)
+                  i(class=icon_tags)
+                else
+                  i(class=icon_tag)
+                each tag in page.tags.data
+                  a.page_tag.marginR(href=url_for(tag.path))=tag.name

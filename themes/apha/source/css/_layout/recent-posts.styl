@@ -1,0 +1,58 @@
+.recent-post-item
+  display flex
+  margin-top $block-margin
+  border-radius $border-radius
+  if hexo-config('global-blur') != 0
+    backdrop-filter: saturate(180%) blur($global-blur)
+  transition all 0.5s
+  background var(--bg-color)
+  .post_cover.side
+    max-width 480px
+    overflow hidden
+    border-radius $border-radius 0 0 $border-radius //当前为仅为左侧
+    flex 3
+    img
+      height 100%
+      width 100%
+      object-fit cover
+      transform none
+      transition .2s
+  .post_info
+    margin auto 0
+    padding $block-padding
+    flex 5
+    font-size 15px
+    a.post_title
+      font-size 26px
+      color var(--text-color-r)
+      font-weight 600
+      transition 0.1s
+      i.fa.fa-link.fa-tw
+        font-size 20px
+        transition 0.1s
+    a.post_title:hover
+      color var(--main-color)
+      font-size 30px
+      i.fa.fa-link.fa-tw
+        font-size 24px
+    p
+      margin 6px
+    a
+      color var(--text-color-r)
+      transition .1s
+    a:hover
+      color var(--main-color)
+    .post_description
+      line-height 24px
+      display -webkit-box
+      -webkit-box-orient vertical
+      -webkit-line-clamp 8
+      overflow hidden
+    i
+      margin-right 4px
+
+.recent-post-item:hover
+  box-shadow var(--b-shadow)
+  .post_cover.side
+    img:hover
+      transform scale(1.1)

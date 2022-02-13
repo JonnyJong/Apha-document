@@ -1,0 +1,67 @@
+//- 标题
+- var pageTitle = page.title ? page.title + " | " : ""
+- if (is_archive()) pageTitle = _p('page_title.archive') + ' | '
+- if (is_tag()) pageTitle = _p('page_title.tag') + page.tag + ' | '
+- if (is_category()) pageTitle = _p('page_title.category') + page.category + ' | '
+- if (is_month()) pageTitle = _p('page_title.archive') + _p('page_title.colon') + page.month + '/' + page.year + ' | '  //- a bug here
+- if (is_year()) pageTitle = _p('page_title.archive') + _p('page_title.colon') + page.month + '/' + page.year + ' | '
+- pageTitle += config.title + (config.subtitle ? ' | ' + config.subtitle : "")
+
+//- 位置
+- var what_is_this_page = 'page'
+- if (is_home()) what_is_this_page = 'home'
+- if (is_post()) what_is_this_page = 'post'
+
+//- 设置
+- var global_back_btn = theme.back_buttom
+- var user_scalable = theme.user_scalable ? "" : ", user-scalable=no"
+
+//- 颜色模式
+- var color_scheme = theme.color_mode=="dark" ? theme.color_mode : "light" //- no-preference light dark
+
+include ./mixin.pug
+
+doctype html
+//- html(lang=config.language color-mode=color_scheme)
+html(lang=config.language prefers-color-scheme=color_scheme)
+  head
+    //- 基本信息
+    meta(charset='UTF-8')
+    title= pageTitle
+    link(rel="icon" href=theme.info.favicon)
+    meta(name="viewport" content="width=device-width" + user_scalable)
+    meta(name="description" content=page.description ? page.description : config.description)
+    if page.keywords
+      meta(name="keywords" content=page.keywords)
+    //- main css
+    link(rel='stylesheet', href=theme.CDN.mainCss)
+    //- 引入 js 设置
+    include ./config.pug
+    //- 引用CDN
+    link(rel='preload', href=theme.CDN.fontawesome, as="style", onload="this.rel='stylesheet'")
+    //- 需要提前执行的 js
+    include ./head_js.pug
+  body(where=what_is_this_page)
+    include ./var.pug
+    include ./search.pug
+    include ./skipToContentButtom.pug
+    include ./header/header.pug
+    //- .forTest(style="height:100px;width:100px;background:#0002;position:fixed;top:30vh;right:0;z-index:1000;cursor:pointer;user-select:none;" onclick="if(document.documentElement.getAttribute('prefers-color-scheme')=='dark'){document.documentElement.setAttribute('prefers-color-scheme','light')}else{document.documentElement.setAttribute('prefers-color-scheme','dark')}")='实验模式：\n切换暗色、亮色模式'
+    #content-outer
+      #content-inner
+        if body
+          div!= body
+        else
+          block content
+          if (theme.sidebar.enable) && (theme.sidebar.items)
+            .side_column
+              .sidebar_items
+                include ./sidebar/sidebar.pug
+    include ./footer.pug
+    if theme.background.type
+      .bg
+    //- main JS
+    script(type="text/javascript" src=theme.CDN.mainJs)
+    //- 引用CDN
+    if theme.third_party.busuanzi
+      script(async src=theme.CDN.busuanzi)

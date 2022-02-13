@@ -1,0 +1,448 @@
+# 信息
+info:
+  # 首页大标题（false、default、value；关闭、默认、值。）
+  big_title: 
+  # 首页副标题（false、default、value；关闭、默认、值。）
+  subtitle: 
+  # 站点图标
+  favicon: 
+  # 头像（默认使用站点图标）
+  avatar: 
+  # 社交链接
+  social_link:
+  # 建站时间
+  site_begin: 
+
+# =============================================================
+# 快捷入口（首页标题旁）
+# 只制作基本的框架，等待制作各种风格的模板插件。故暂时停工
+quick_entrance:
+  # 是否开启（true/false）
+  enable: false
+  # 组件（不建议设置过多的组件）
+  items:
+      # 组件 id（作用于页面排版、不可见）
+    - id: 
+      # 自定义 html + css（开启后下列选项除 content 外均无效）
+      custom:
+      # 组件名
+      name: 
+      # 链接
+      url: 
+      # 样式（突起：下图上文背景、上图下文背景、左上图上文背景内容；凹下：下图上文背景、上图下文背景、左上图上文背景内容） 
+      # 暂时不可用：由风格插件决定
+      # style: 
+      # 类型
+      type:
+      # 尺寸（1x1、1x2、2x2）
+      size: 
+      # 图标
+      img: 
+      # 背景图片
+      background_img: 
+      # 颜色
+      color:
+      # 内容（支持 html + css）
+      content: 
+
+# =============================================================
+# 归档
+archive:
+  # 页面仅展示归档（开启后归档页的展示方式将改变，且 show 失效）（未配置）
+  only_archive: 
+  # 归档页展示（你可以将归档、归类、标签全部集中到这个页面来显示，你可以自定义展示顺序，最少需要展示一项）
+  show:
+  # 显示数量
+  show_count: false
+  # 显示总数
+  show_total: false
+  # 按月份
+  monthly: false
+  # 日期格式（默认：YYYY MMMM）
+  format:
+  # 封面图
+  cover: 
+# 分类
+category:
+  # 显示数量
+  show_count: false
+  # 显示总数
+  show_total: false
+  # 将内容渲染到分类之后
+  after_content: true
+# 标签
+tag:
+  # 显示数量
+  show_count: false
+  # 显示总数
+  show_total: false
+  # 将内容渲染到标签之后
+  after_content: true
+
+# =============================================================
+# 导航栏
+navbar:
+  # 自定义组件（允许自由调整顺序）
+  items:
+  # 手机端顶栏组件（方法同上，互相独立）
+  mbl_item_on_navbar:
+  
+  # 导航栏高度（默认 60px）
+  height: 
+  # 导航栏外部宽度（默认 100%）
+  outer_width:
+  # 导航栏外部最大宽度 （默认 100%）
+  outer_max_width:
+  # 导航栏内部宽度 （默认 90%）
+  inner_width: 
+  # 导航栏内部最大宽度 （默认 1400px。推荐值：100%）
+  inner_max_width: 
+  # 导航栏与顶部距离（top 和 bottom 建议只设置其中一个）
+  top: none
+  # 导航栏与底部距离
+  bottom: none
+  # 自动收起
+  auto_folding: false
+
+  # 手机端菜单位置（left、right；默认 left）
+  mbl_menu: 
+  # 手机端菜单宽度（max-content ，自动 或 px vw，默认自动）
+  mbl_outer_width: 
+  # 手机端菜单按钮高度
+  mbl_item_height:
+  # 手机端菜单水平内间距（默认 8px）
+  mbl_horizontal_padding:
+  # 手机端菜单纵向内间距（默认 10px）
+  mbl_vertical_padding:
+
+
+  # 元素间距（默认 0px）
+  item_distance: 
+  # 元素内横向间距（默认 8px）
+  item_inside_distance: 
+
+  # 不透明度（较低的背景模糊度建议使用较高的不透明度，较低的不透明度建议使用较高的背景模糊度。默认 0.8）
+  opacity: ''
+  # 背景模糊度（单位：px。建议不要使用过高的数值，这可能会导致卡顿。设置 0 可关闭。）
+    # 一般情况下，Firefox 浏览器中 backdrop-filter 有限制
+  blur: 
+  # 导航栏圆角（none、default、value；无、默认、数值。建议使用 px 而不是 %，使用 % 会导致变为椭圆）
+  border_radius:
+
+  # 二级菜单圆角（默认 6px）
+  sub_menu_border_radius:
+
+# =============================================================
+# 侧边栏
+sidebar:
+  enable: false
+  # 自定义组件（允许自由调整顺序）
+  items:
+# =============================================================
+# 侧边按钮（未配置）
+side_btn: 
+  enable:
+  items:
+
+# =============================================================
+# 首页文章
+index_posts:
+  # 封面默认样式【false、side、down；关闭、侧边（手机上将显示在上方）、文章信息下层】（未完成）
+  cover_default_style: side
+  # 封面位置（both、left、right。当 cover_default_style 为 side 时有效）（未配置）
+  position:
+  # 封面高度（单位：px。当 cover_default_style 为 top 或 down 时有效）（未配置）
+  top_default_height:
+  
+  # 信息样式（false、gradient、block；无、渐变、块状。当 cover_default_style 为 down 时有效）（未配置）
+  incard_info_bg:
+  # block 背景样式（未配置）
+  incard_info_bg_block:
+    # 不透明度（默认 .2）（未配置）
+    opacity: ''
+    # 不透明度（默认 10px）（未配置）
+    blur: 
+  # gradient 背景样式（未配置）
+  incard_info_bg_gradient:
+    # 开始和结束颜色（色值必须用英文引号包括，例：'#2333'）（未配置）
+    begin_color: ''
+    end_color: ''
+  
+  # 文章概要、描述
+  description:
+    # 类型【false、description、excerpt、content、auto；关闭、描述、概要、选取文章内容、自动（优先级：描述 > 概要 > 文章内容）】
+    type: false
+    # 无概要、描述时显示（当 type 为 description 或 excerpt 时有效）
+    default_description:
+    # 最大长度（当 type 为 content 或 auto 时有效，推荐不大于500）
+    max_length: 300
+  # 字数统计
+  wordcount: false
+  # 显示创建日期
+  show_date: false
+  # 显示更新日期
+  show_updated: false
+  # 显示标签
+  show_tags: false
+  # 显示分类
+  show_categories: false
+
+# =============================================================
+# 页面样式
+page:
+  # 信息样式（false、gradient、block；无、渐变、块状。）
+  incard_info_bg: false
+  # block 背景样式
+  incard_info_bg_block:
+    # 不透明度（默认 .8）
+    opacity: ''
+    # 不透明度（默认 10px）
+    blur: 
+  # gradient 背景样式
+  incard_info_bg_gradient:
+    # 开始和结束颜色（色值必须用英文引号包括，例：'#2333'）
+    begin_color: ''
+    end_color: ''
+  
+  # 页面背景同文章封面（未配置）
+  bg_as_cover:
+
+  # 段落标题易读性增强
+  paragraph_title_readability: false
+  # 将 H2 显示为 H1，以此类推，用于优化 SEO 后便于阅读（未配置）
+  after_seo_paraTitleReadly: false
+
+  # 复制按钮
+  copy_button: false
+  # 显示行号
+  line_number: false
+  # 固定左侧行号（与自动换行冲突）
+  sticky_line_number: false
+  # 自动换行（不推荐）
+  auto_warp:
+  # 折叠按钮（未配置）
+  fold_botton:
+  # 折叠（默认折叠、超过长度隐藏）（未配置）
+  auto_fold:
+  # 完整的高亮颜色（将会增加 css 大小）（未配置）
+  full_highlight_color:
+
+  # 图片描述文字
+  img_desc: false
+
+  # 版权信息
+  copyright: false
+  # 协议
+  # CC：https://creativecommons.org/choose/
+  lisence: CC, BY, ND, SA
+  # lisence: CC, BY, NC, ND, SA
+
+  # 字数统计
+  wordcount: false
+  # 显示创建日期
+  show_date: false
+  # 显示更新日期
+  show_updated: false
+  # 显示标签
+  show_tags: false
+  # 显示分类
+  show_categories: false
+
+  # 点击目录平滑转跳（将目录的链接替换为 onclick 事件）
+  click_toc_smooth_jump: false
+
+  # 提示块圆角（推荐值：留空、0~10px）
+  blocktip_radius:
+
+# 友链样式
+link:
+  # 头像圆角（round、square、auto；圆、方形、自动）
+  avatar_radius: round
+  # 将内容渲染到分类之后
+  after_content: false
+
+# =============================================================
+# 页脚
+footer:
+  # 版权信息
+  copyright: false
+  since: 
+  # 运行时长
+  runtime: false
+  # 版权信息
+  hexo_and_apha_info: false
+  # 自定义信息
+  content: 
+
+# =============================================================
+# 评论系统（未配置）
+comment:
+
+# =============================================================
+# 全局
+
+# 主题色
+theme_color:
+  main: 
+
+  # 黑白（未完成）*
+  black_and_white: false
+
+# 默认颜色模式
+# auto：自动，根据用户浏览器设置
+# time：自动，根据时间
+# light：亮色
+# dark：暗色
+color_mode: 
+
+# =============================================================
+# 字体（暂未完成）
+font:
+  font-family: ''
+  font-url: ''
+
+# =============================================================
+# 图标（在此处修改主题使用的图标）（未配置）
+# Q：为何需要此功能？
+# A：fontawesome 提供了许多图标，但大部分是不需要的，故提供此方式用于使用自己的图标。
+icons:
+  # 文章创建日期
+  date:
+  # 文章更新日期
+  updated:
+  # 阅读量
+  read:
+  # 归类
+  categorie:
+  # 标签（单个）
+  tag:
+  # 标签（多个）
+  tags:
+  # 文章字数
+  wordcount:
+  # 文章置顶
+  pin:
+  # 返回图标
+  back:
+  # 上一篇文章
+  prev_post:
+  # 下一篇文章
+  next_post:
+  # 菜单
+  menu:
+  # 子菜单指示
+  sub_menu:
+  # 关闭按钮
+  close_btn:
+  # 链接
+  link:
+  # 搜索
+  search:
+
+# =============================================================
+# 自定义背景
+background:
+  # 类型（img）
+  type: 
+  img:
+    # 图片
+    bg:  # 按照 css 语法
+    # 跟随滚动
+    scroll: false
+    # 模糊度（单位：px）
+    blur: 
+    # 不透明度
+    opacity: 
+    # 重复
+    repeat: 
+
+
+# =============================================================
+# 主页横幅图像
+index_banner_img: 
+# 主页横幅高度（单位：px、vh）
+index_banner_height: 
+# 滚动视差
+index_banner_img_parallax: true
+# 主页大标题字体大小基数（默认 96px）
+index_big_title_font_size:
+# 主页副标题字体大小基数（默认 24px）
+index_subtitle_font_size:
+
+# =============================================================
+# 板块外边框（单位：px）
+block-margin: 
+# 板块内边框
+block-padding: 
+# 模块圆角（单位：px）
+border-radius:
+# 模块背景不透明度（较低的背景模糊度建议使用较高的不透明度，较低的不透明度建议使用较高的背景模糊度）
+global-opacity: ''
+# 模块背景高斯模糊度（单位：px。建议不要使用过高的数值，这可能会导致卡顿。设置 0 可关闭。）
+global-blur: 0
+# 最大宽度（单位：px。默认：1400px。建议大于 1000px，过小的值会导致排版错乱。设置 none 为不限制。）
+max-width: 
+# 最小边界（当屏幕宽度小于最大宽度时，默认 16px）
+min_margin:
+
+# =============================================================
+# 转跳到内容按钮（进入页面后按下 Tab，将会在屏幕顶部出现此按钮）
+skip_to_content_buttom: true
+# 在适当的区域增加返回按钮
+back_buttom: true
+# 页面切换按钮样式（flex-start、flex-end、center；居左、居右、居中。默认居中）
+page_switch_btn_style: 
+
+# 允许放大（双指放大）
+user_scalable: true
+# 文章外禁用选中（未配置）*
+no_select_unless_article: true
+# 文章禁用选中（未配置）*
+no_select_in_article: false
+
+# 动画效果（未配置）
+# 0：没有动画
+# 1：最低限度的的动画
+# 2：基本的动画
+# 3：完整的动画
+animation:
+
+# 将必要的 CSS 写入 HTML（未配置）
+# 必要的 CSS 指布局和尺寸相关的 CSS
+# 用于优化加载速度，启用此项后会异步加载其余 CSS，每个 HTML 的尺寸会有所上升
+main_css_in_html:
+# CSS 分块（未配置）
+# 将 CSS 分为多个文件，在不同的页面加载所需的 CSS
+# 用于优化加载速度，减少未使用的 CSS 数量
+# 建议与 main_css_in_html 同时开启
+differentiate_css:
+# JS 分块（同上，但当前 JS 量少，暂无必要）（未配置）
+
+# 图片懒加载（未配置）
+lazyload:
+
+# Pjax（未配置）
+pjax:
+
+# PWA
+pwa:
+
+# 搜索
+# 数据库路径（若修改了 search.template 请同步修改，默认使用“/search.json”）
+search_db_href:
+
+# =============================================================
+# 第三方
+third_party:
+  # busuanzi 统计（引入 js 用于统计访问量与访客数）
+  busuanzi: false
+
+# =============================================================
+CDN:
+  # 主要引入 Mainly introduced
+  mainCss: /css/hexo-theme-apha.css
+  mainJs: /js/hexo-theme-apha.js
+
+  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css
+
+  busuanzi: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js

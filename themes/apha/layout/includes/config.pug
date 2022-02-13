@@ -1,0 +1,44 @@
+//- - const isHome = is_home()
+//- - const isPost = is_post()
+//- - const isPage = is_page()
+//- - const isAchv = is_archive()
+//- - const isCate = is_category()
+//- - const isTag = is_tag()
+
+- const fooSt = (theme.footer.since) ? true : false
+- const ifToc = (page.toc != undefined) ? page.toc : true
+- const tocSmJ = theme.page.click_toc_smooth_jump ? true : false
+- const s_db_href = theme.search_db_href ? theme.search_db_href : "/search.json"
+
+script.
+  var config = { 
+    navFold: !{theme.navbar.auto_folding},
+    imgDesc: !{theme.page.img_desc},
+    cpBtn: !{theme.page.copy_button},
+    fooRt: !{theme.footer.runtime},
+    fooSt: !{fooSt},
+    ifToc: !{ifToc},
+    tocSmJ: !{tocSmJ},
+    s_db_href: "!{s_db_href}",
+    s_msg_load: "正在加载数据库",
+    s_msg_failed: "数据库加载失败",
+    s_msg_nothing: "没有结果",
+    s_notitle: "!{_p('post_item.notitle')}",
+    lang_days: "!{_p('js.time.days')}",
+    lang_hours: "!{_p('js.time.hours')}",
+    lang_mins: "!{_p('js.time.mins')}",
+    lang_s: "!{_p('js.time.s')}",
+    lang_days_b: "!{_p('js.time.days_before')}",
+    lang_hours_b: "!{_p('js.time.hours_before')}",
+    lang_mins_b: "!{_p('js.time.mins_before')}",
+    lang_s_b: "!{_p('js.time.s_before')}",
+    icon_tag: "!{icon_tag}",
+    icon_tags: "!{icon_tags}",
+  }
+
+//- isHome: !{isHome},
+//- isPost: !{isPost},
+//- isPage: !{isPage},
+//- isAchv: !{isAchv},
+//- isCate: !{isCate},
+//- isTag: !{isTag},

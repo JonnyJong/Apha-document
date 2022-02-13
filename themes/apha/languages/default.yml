@@ -1,0 +1,64 @@
+page_title:
+  archive: 归档
+  tag: 标签：
+  category: 分类：
+  colon: ：
+global:
+  skip_to_content: 转跳到内容
+  back_buttom: 返回
+  search: 搜索
+  search_placeholder: 键入以搜索
+post_item:
+  date: 创建于
+  updated: 更新于
+  notitle: 无标题
+  read: 阅读量
+  link_page: 友情链接
+  wordcount_before: "共 "
+  wordcount_after: " 字"
+  sticky: "置顶 "
+footer:
+  frame: 框架
+  theme: 主题
+post:
+  next_post: 下一篇文章
+  prev_post: 上一篇文章
+page:
+  archives: 归档
+  categories: 分类
+  tags: 标签
+  no_category: 暂无归类。
+  no_tag: 暂无标签。
+  no_archive: 暂无。
+sidebar:
+  site_info:
+    num_of_articles: 文章数目
+    total_word_count: 总字数
+    total_visitors: 总访客数
+    total_visits: 总访问量
+    runtime: 运行时长
+    last_update: 最后更新时间
+copyright:
+  author: 作者
+  date: 创建日期
+  updated: 更新日期
+  lisence: 许可协议
+  lisences:
+    CC:
+      start_content: 采用
+      end_content: " 4.0 国际许可协议"
+      zero: "无著作权"
+      BY: 署名
+      NC: 非商业性使用
+      ND: 禁止演绎
+      SA: 相同方式共享
+js:
+  time:
+    days: 天
+    hours: 小时
+    mins: 分钟
+    s: 秒
+    days_before: 天前
+    hours_before: 小时前
+    mins_before: 分钟前
+    s_before: 秒前
