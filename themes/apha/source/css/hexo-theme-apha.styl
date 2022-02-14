@@ -91,10 +91,11 @@ a
   margin-bottom $block-margin
 
 // 页面主要部分与上方间隔
-[where="page"]
-[where="post"]
-  #content-inner
-    padding $navbar_height $main_content_margin $block-margin $main_content_margin
+if hexo-config("sidebar.enable") && hexo-config("sidebar.items")
+  [where="page"]
+  [where="post"]
+    #content-inner
+      padding $navbar_height $main_content_margin $block-margin $main_content_margin
 [where="home"] #content-inner
   padding 0 $main_content_margin $block-margin $main_content_margin
 // hr
