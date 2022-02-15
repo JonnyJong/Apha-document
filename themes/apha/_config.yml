@@ -84,9 +84,12 @@ tag:
 # 导航栏
 navbar:
   # 自定义组件（允许自由调整顺序）
-  items:
-  # 手机端顶栏组件（方法同上，互相独立）
-  mbl_item_on_navbar:
+  # PC 端导航栏组件
+  pc_nav_items:
+  # 手机端导航栏组件
+  mbl_nav_items:
+  # 侧边导航栏组件
+  side_nav_items:
   
   # 导航栏高度（默认 60px）
   height: 
