@@ -138,6 +138,7 @@ navbar:
 ### mark
 
 `mark 参数`用于使各个键值名不重复，标记允许填写各种合法的字符，如：所有字母、数字、中文字符、英文逗号、空格、下划线。
+主题中所有 `mark 参数` 均同理。
 {% blocktip "red" "fas fa-times" %}
 这种写法将会报错，因为第 3 行和第 4 行键值名重复了；第 5 行和第 6 行的键值名也重复了。
 ```yml 主题配置文件
@@ -285,7 +286,7 @@ inner_width: max-content
 navbar:
   # 手机端菜单位置（left、right；默认 left）
   mbl_menu: 
-  # 手机端菜单宽度（max-content ，自动 或 px vw，默认自动）
+  # 手机端菜单宽度（单位：px vw，默认自动）
   mbl_outer_width: 
   # 手机端菜单按钮高度
   mbl_item_height:
@@ -294,3 +295,132 @@ navbar:
   # 手机端菜单纵向内间距（默认 10px）
   mbl_vertical_padding:
 ```
+
+# 侧边栏
+首先，启用侧边栏。
+```yml 主题配置文件
+sidebar:
+  enable: true
+```
+
+侧边栏由`组件组`和`组件`组成。按照以下格式填写。
+```yml 主题配置文件
+sidebar:
+  items:
+    <page>, <device>, <mark>:
+      <type>, <mark>: <value>
+    sticky_items:
+      <page>, <device>, <mark>:
+        <type>, <mark>: <value>
+```
+具体可填写的数值，参考下表。
+|参数名        |作用                          |
+|----------------|-------------------------------|
+|page          |页面限制           |
+|device          |设备限制           |
+|mark          |标记           |
+|value          |参数           |
+|type          |组件类型           |
+
+## page、device
+`page` 和 `device` 参数用于限制`组件组`能够在哪些页面和设备上显示。
+需要留意的是，Apha 是通过屏幕尺寸来区分设备的。
+
+|page 参数       |说明                          |
+|----------------|-------------------------------|
+|all          |在所有页面上显示           |
+|index          |仅在首页显示           |
+|page          |仅在非首页页面显示           |
+
+<p></p>
+
+|device 参数       |说明                          |
+|----------------|-------------------------------|
+|all          |在所有设备上显示           |
+|pc          |仅 PC 端显示           |
+|mbl          |仅手机端显示           |
+
+## type
+`type 参数`用于选择不同的组件，以下是可选的组件列表。
+|参数        |说明                          |
+|----------------|-------------------------------|
+|title|特殊组件：组件组标题             |
+|icon          |特殊组件：组件组标图标           |
+|avatar|头像             |
+|author_name          |作者名           |
+|social_link          |社交链接           |
+|act_statistics          |归档、归类、标签统计           |
+|text          |文本           |
+|toc          |目录           |
+|newest_posts          |最新文章           |
+|tags          |标签云           |
+|categories          |归类           |
+|search          |搜索           |
+|button          |按钮           |
+|num_of_articles          |文章数目           |
+|total_word_count          |站点总字数           |
+|total_visitors          |总访客数           |
+|total_visits          |总访问量           |
+|runtime          |运行时长           |
+|last_update          |最后更新时间           |
+
+### title、icon
+`title` 和 `icon` 是两个特殊组件，没有 `mark 参数`。用于设定`组件组`的标题和图标，选填，每个组件组有且仅能有一个 `title` 和 `icon`。
+
+以下是示例。
+```yml 主题配置文件
+sidebar:
+  items:
+    all, pc, new:
+      icon: fas fa-calendar
+      title: 最新文章
+    all, pc, link:
+      icon: fas fa-link
+    all, pc, comment:
+      title: 评论
+    all, pc, me:
+```
+![示例](/imgs/doc3_0.png "左为未填写 title 和 icon，右均有填写")
+
+## sticky_items
+`sticky_items` 是一个特殊的组件组，至多只能创建一个并且必须是`最后一个`组件组。
+不能直接在这个组件组内创建组件，而需要创建普通的组件组，再在普通的组件组内创建组件。
+{% blocktip "red" "fas fa-times" %}
+这种写法不会报错，但会导致排版错误。因为 `sticky_items` 没有被放到最后。
+```yml 主题配置文件
+sidebar:
+  items:
+    sticky_items:
+      all, all:
+        title: Apha
+    all, all:
+      title: Apha
+```
+{% endblocktip %}
+{% blocktip "red" "fas fa-times" %}
+这种写法不会报错，但会导致排版错误。因为 `sticky_items` 存在多个。
+```yml 主题配置文件
+sidebar:
+  items:
+    all, all:
+      title: Apha
+    sticky_items:
+      all, all:
+        title: Apha
+    sticky_items, 1:
+      all, all:
+        title: Apha
+```
+{% endblocktip %}
+{% blocktip "green" "fas fa-check" %}
+这种写法是正确的。
+```yml 主题配置文件
+sidebar:
+  items:
+    all, all:
+      title: Apha
+    sticky_items:
+      all, all:
+        title: Apha
+```
+{% endblocktip %}
