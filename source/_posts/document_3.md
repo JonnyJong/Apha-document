@@ -46,8 +46,9 @@ navbar:
 |type          |组件类型           |
 |head value          |头部参数           |
 |mark          |标记           |
+|value          |参数           |
 
-其中，`pc_nav_items` 中设置的组件将显示在 PC 端“顶部”的`导航栏`中；`mbl_nav_items` 中设置的组件将显示在手机端“顶部”的`导航栏`中；`side_nav_items` 中设置的组件将显示在`侧边导航栏`中。
+其中，`pc_nav_items` 中设置的组件将显示在 PC 端的`横向导航栏`中；`mbl_nav_items` 中设置的组件将显示在手机端的`横向导航栏`中；`side_nav_items` 中设置的组件将显示在`侧边导航栏`中。
 
 需要留意的是，Apha 是通过屏幕尺寸来区分设备的。手机的屏幕较小，应当将大多数组件放在`侧边导航栏`而不是`导航栏`中。
 
@@ -142,10 +143,10 @@ navbar:
 ```yml 主题配置文件
 navbar:
   items:
-    all, text: "hello"
-    all, text: "hello"
-    all, search, 0: "icon"
-    all, search, 0: "input"
+    text: "hello"
+    text: "hello"
+    search, 0: "icon"
+    search, 0: "input"
 ```
 {% endblocktip %}
 {% blocktip "green" "fas fa-check" %}
@@ -153,10 +154,143 @@ navbar:
 ```yml 主题配置文件
 navbar:
   items:
-    all, text: "hello"
-    all, text， 1: "hello"
-    all, search, 0: "icon"
-    all, search, 1: "input"
+    text: "hello"
+    text， 1: "hello"
+    search, 0: "icon"
+    search, 1: "input"
 ```
 {% endblocktip %}
 
+## 配置导航栏
+通过以下选项自定义导航栏。
+```yml 主题配置文件
+# 导航栏
+navbar:
+  # 不透明度（较低的背景模糊度建议使用较高的不透明度，较低的不透明度建议使用较高的背景模糊度。默认 0.8）
+  opacity: ''
+  # 背景模糊度（单位：px。建议不要使用过高的数值，这可能会导致卡顿。设置 0 可关闭。）
+    # 一般情况下，Firefox 浏览器中 backdrop-filter 有限制
+  blur: 
+  # 背景饱和度（单位：%。基础值：100%。推荐随模糊度增加而增加。）
+  saturate:
+  # 导航栏圆角（none、default、value；无、默认、数值。建议使用 px 而不是 %，使用 % 会导致变为椭圆）
+  border_radius:
+```
+### 横向导航栏
+可通过以下选项自定义横向导航栏。
+```yml 主题配置文件
+# 导航栏
+navbar:
+  # 导航栏高度（默认 60px）
+  height: 
+  # 导航栏外部宽度（默认 100%）
+  outer_width:
+  # 导航栏外部最大宽度 （默认 100%）
+  outer_max_width:
+  # 导航栏内部宽度 （默认 90%）
+  inner_width: 
+  # 导航栏内部最大宽度 （默认为页面主体最大宽度。推荐值：100%）
+  inner_max_width: 
+  # 导航栏与顶部距离（top 和 bottom 建议只设置其中一个）
+  top: none
+  # 导航栏与底部距离
+  bottom: none
+  # 自动收起
+  auto_folding: false
+
+  # 元素间距（默认 0px）
+  item_distance: 
+  # 元素内横向间距（默认 8px）
+  item_inside_distance: 
+
+  # 二级菜单圆角（默认 6px）
+  sub_menu_border_radius:
+```
+
+其中，`导航栏内部最大宽度` 
+
+#### 在线体验
+<style>
+  .docShow1{
+    position: absolute;
+    z-index: 0;
+    transition: .1s;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .docShow1 .navbar_inner{
+    transition: .1s;
+  }
+</style>
+{% blocktip " " " " %}
+
+在下方输入数值查看效果。单位：`%`、`px`、`vw`。 
+在这个体验中，关于宽度的值部分可以将 `vw` 等同于 `%`。此外，拖动展示框右下角可以调整尺寸。
+
+部分选项无法在这个体验中展示。
+
+border_radius 导航栏圆角（none、default、value；无、默认、数值。建议使用 px 而不是 %，使用 % 会导致变为椭圆）
+<input type="input" oninput="document.querySelector('.docShow1').style.borderRadius=this.value;">
+
+height 导航栏高度（默认 60px）
+<input type="input" oninput="document.querySelector('.docShow1').style.height=this.value;">
+
+top 导航栏与顶部距离（top 和 bottom 建议只设置其中一个）
+<input type="input" oninput="document.querySelector('.docShow1').style.top=this.value;">
+
+bottom 导航栏与底部距离
+<input type="input" oninput="document.querySelector('.docShow1').style.bottom=this.value;">
+
+outer_width 导航栏外部宽度（默认 100%）
+<input type="input" oninput="document.querySelector('.docShow1').style.width=this.value;">
+
+outer_max_width 导航栏外部最大宽度（默认 100%）
+<input type="input" oninput="document.querySelector('.docShow1').style.maxWidth=this.value;">
+
+inner_width 导航栏内部宽度（默认 90%）
+<input type="input" oninput="document.querySelector('.docShow1 .navbar_inner').style.width=this.value;">
+
+inner_max_width 导航栏内部最大宽度（默认 1400px）
+<input type="input" oninput="document.querySelector('.docShow1 .navbar_inner').style.maxWidth=this.value;">
+
+<div style="border: 1px solid var(--text-color-r);margin:16px 0;resize:both;overflow:auto;max-width:100%;max-height:100vh;position:relative;min-height:60px;">
+<nav class="navbar docShow1">
+<div class="navbar_inner"><div class="nav_item_outer"><a class="side_nav_btn"><div class="nav_item_inner"><i class="fas fa-bars fa-fw"></i></div></a></div><div class="nav_item_outer flexbox"></div><div class="nav_item_outer site_info"><a><div class="nav_item_inner"><span class="site_title">Apha 演示</span></div></a></div><div class="nav_item_outer flexbox"></div><div class="nav_item_outer"><div class="fakeA"><div class="nav_item_inner"><i class="fa fa-search fa-fw"></i><span>搜索</span></div></div></div></div>
+</nav></div>
+
+试试下面的值。
+
+{% blocktip_1 " " " " %}
+```yml
+border_radius: 14px
+top: 14px
+outer_width: calc(100% - 28px)
+```
+{% endblocktip_1 %}
+
+{% blocktip_1 " " " " %}
+```yml
+border_radius: 1000px
+bottom: 20px
+outer_width: max-content
+inner_width: max-content
+```
+{% endblocktip_1 %}
+
+{% endblocktip %}
+
+### 侧边导航栏
+```yml 主题配置文件
+# 导航栏
+navbar:
+  # 手机端菜单位置（left、right；默认 left）
+  mbl_menu: 
+  # 手机端菜单宽度（max-content ，自动 或 px vw，默认自动）
+  mbl_outer_width: 
+  # 手机端菜单按钮高度
+  mbl_item_height:
+  # 手机端菜单水平内间距（默认 8px）
+  mbl_horizontal_padding:
+  # 手机端菜单纵向内间距（默认 10px）
+  mbl_vertical_padding:
+```
