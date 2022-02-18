@@ -93,7 +93,7 @@ navbar:
     act_statistics:
     hr:
     flexbox, 0: 
-    search, 0: icon
+    search, 0: button
     menu, 主页, fas fa-home, /:
     menu, 友情链接, fa fa-link, /link/:
     menu, 文章, fa fa-graduation-cap:
@@ -106,14 +106,14 @@ navbar:
     flexbox, 0: 
     site, 0:
     flexbox, 1: 
-    search, 0: icon
+    search, 0: button
   # 侧边导航栏组件
   side_nav_items:
     side_nav_btn:
     site:
     act_statistics:
     hr:
-    search, 0: icon
+    search, 0: button
     menu, 关于, fa fa-heart, /about/:
     menu, 友情链接, fa fa-link, /link/:
     menu, 文章, fa fa-graduation-cap:
@@ -175,8 +175,9 @@ sidebar:
     # all、page、index；all、pc、mbl（此注释发布时删除，请写入文档）
     all, all, search:
       # search: # 搜索功能需要安装 hexo-generator-search 并在根目录 _config.yml 添加配置。 # 两种样式 icon/input
-      search, 0: icon
+      search, 0: button
       search, 1: input
+      button: /
     all, all, author:
       avatar, 1: #round
       author_name:
@@ -194,9 +195,9 @@ sidebar:
         icon: fas fa-bars
         title: 目录
         toc:
-          post: true
-          page: true
-          list_number: true
+          # post: true
+          # page: true
+          # list_number: true
       all, pc, cate:
         icon: fas fa-calendar
         title: 最新文章

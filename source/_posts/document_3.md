@@ -1,7 +1,7 @@
 ---
 title: Apha 文档：配置主题（三）
 date: 2022-02-15
-updated: 2022-02-15
+updated: 2022-02-18
 ---
 {% blocktip "blue" "fas fa-info" %}
 当前文档版本为 `v0.0.3 build 3.101`
@@ -78,62 +78,122 @@ navbar:
 ```
 这样，侧边导航栏按钮将不会在 PC 端显示，仅在手机端显示，且`侧边导航栏`中也会有一个关闭按钮。当然，也可以点击`侧边导航栏`外部区域关闭`侧边导航栏`。
 
-#### site、img、text、act_statistics、hr、flexbox、search
-以下是各个类型参数的写法。
-```yml 主题配置文件
-navbar:
-  items:
-    site: <图片链接 选填：链接 / favicon 即 info 中填写的 favicon 路径 / avatar 即 info 中填写的 avatar 路径>, <站点名 默认为 Hexo 配置文件中的 title 允许替换为其他合法的字符串，当为 none 时没有字符串>, <链接 默认为 Hexo 配置文件中的 url，当为 none 时没有链接>
-    img: <图片链接>, <链接 选填>
-    text: <文本>, <链接 选填>
-    act_statistics:
-      archive: <归档页面的链接 选填 默认为“/archives/”>
-      categorie: <分类页面的链接 选填 默认为“/categories/”>
-      tag: <标签页面的链接 选填 默认为“/tags/”>
-    hr:
-    flexbox:
-    search: <类型 选填：icon 按钮 / input 输入框>
-```
-以下是示例的写法。
-```yml 主题配置文件
-navbar:
-  items:
-    site: 
-    img: /favicon.png
-    text: ヾ(≧▽≦*)o
-    act_statistics:
-      categorie: /categories/
-      tag: /tags/
-    hr:
-    flexbox:
-    search: icon
-```
-
 #### menu
 menu 类型是唯一一个需要填写 `head value 参数` 的类型。
+此外，在菜单中还可以使用 hr 创建一条分割线。
 以下是参数的写法。
 ```yml 主题配置文件
-navbar:
-  items:
-    # 普通的菜单项
-    menu, <名称 选填>, <图标 选填>, <链接 选填>:
-    # 有子菜单的菜单项
-    menu, <名称 选填>, <图标 选填>, <链接 选填>:
-      <名称 选填>: <链接 选填>, <图标 选填>
-      hr:
+# 普通的菜单项
+menu, <名称 选填>, <图标 选填>, <链接 选填>:
+# 有子菜单的菜单项
+menu, <名称 选填>, <图标 选填>, <链接 选填>:
+  <名称 选填>: <链接 选填>, <图标 选填>
 ```
 以下是示例的写法。
 ```yml 主题配置文件
-navbar:
-  items:
-    # 普通的菜单项
-    menu, 主页, fas fa-home, /:
-    # 有子菜单的菜单项
-    menu, 文章, fa fa-graduation-cap:
-      标签: /tags/, fa fa-tags
-      归类: /categories/, fa fa-archive
-      归档: /archives/, fa fa-folder-open
+# 普通的菜单项
+menu, 主页, fas fa-home, /:
+# 有子菜单的菜单项
+menu, 文章, fa fa-graduation-cap:
+  标签: /tags/, fa fa-tags
+  归类: /categories/, fa fa-archive
+  归档: /archives/, fa fa-folder-open
 ```
+
+#### site
+用于显示站点图标、站点名和提供转跳到站点主页的按钮。
+有 3 个可选参数，如下。
+
+```yml 主题配置文件
+site: <图标链接>, <站点名>, <链接>
+```
+
+|图标链接 的参数        |说明                          |
+|----------------|-------------------------------|
+| <留空> |默认，即没有图标             |
+|favicon|使用 info 中填写的 favicon             |
+|avatar          |使用 info 中填写的 avatar           |
+|<其他链接>          | 使用填写的链接            |
+
+<p></p>
+
+|站点名 的参数        |说明                          |
+|----------------|-------------------------------|
+| <留空> |默认，即使用 Hexo 配置文件中的 title             |
+|none|没有站点名             |
+|<其他字符串>          | 使用填写的字符串            |
+
+<p></p>
+
+|链接 的参数        |说明                          |
+|----------------|-------------------------------|
+| <留空> |默认，即使用 Hexo 配置文件中的 url            |
+|none|没有链接             |
+|<其他链接>          | 使用填写的链接            |
+
+以下是示例。
+```yml 主题配置文件
+site:
+site, 0: " , none, none"
+site, 1: "favicon, ,  "
+site, 2: avatar, Apha, /
+```
+
+#### img
+创建一个可带有链接的图片组件。
+有 1 个必填参数和 1 个可选参数，如下。
+```yml 主题配置文件
+img: <图片链接>, <链接>
+```
+
+以下是示例。
+```yml 主题配置文件
+img: /avatar.png
+img, 0: /avatar.png, /
+```
+
+#### text
+创建一个可带有链接的文本组件。
+有 1 个必填参数和 1 个可选参数，如下。
+```yml 主题配置文件
+text: <文本>, <链接>
+```
+
+以下是示例。
+```yml 主题配置文件
+text: hello world!
+text, 0: hello world!, /
+```
+
+#### search
+创建一个用于搜索的按钮或输入框。
+有 1 个必填参数，如下。
+```yml 主题配置文件
+# 搜索按钮
+search: button
+# 输入框
+search, 0: input
+```
+
+#### act_statistics
+用于同时显示归档、归类和标签的统计。
+有 3 个可选参数，如下。
+```yml 主题配置文件
+act_statistics:
+  # 归档页链接（默认 /archives/）
+  archive:
+  # 归类页链接（默认 /categories/）
+  categorie:
+  # 标签页链接（默认 /tags/）
+  tag:
+```
+
+#### 其余无参数组件
+以下组件没有参数，直接使用即可。
+|type        |说明                          |
+|----------------|-------------------------------|
+|hr          |分割线           |
+|flexbox          |弹性空间           |
 
 ### mark
 
@@ -381,6 +441,145 @@ sidebar:
     all, pc, me:
 ```
 ![示例](/imgs/doc3_0.png "左为未填写 title 和 icon，右均有填写")
+
+### toc
+这是一个目录组件，用于展示文章目录，同时还可以展示页面的目录。
+建议的做法是目录作为 `sticky_items 组` 中第一个组的唯一个组件，如下。
+```yml 主题配置文件
+sidebar:
+  items:
+    all, all, others:
+    sticky_items:
+      all, all:
+        toc:
+      all, all, others:
+```
+`toc` 组件有 3 个可选参数，如下：
+```yml 主题配置文件
+toc:
+  # 在文章中显示（默认 true）
+  post: 
+  # 在页面中显示（默认 false）
+  page: 
+  # 显示序号（默认 true）
+  list_number: 
+```
+另外，不建议创建多个 `toc` 组件，只有第一个 `toc` 组件能够确保正常运行。
+
+### newest_posts
+该组件用于展示最新的文章。
+该组件有 1 个可选参数，如下。
+```yml 主题配置文件
+newest_posts:
+  # 限制数量（默认 6）
+  limit: 
+```
+
+### categories
+该组件用于展示归类。
+该组件有 2 个可选参数，如下。
+```yml 主题配置文件
+categories:
+  # 归类深度（默认 1）
+  depth: 
+  # 显示分类数量（默认 true）
+  show_count:
+```
+### tags
+该组件用于展示标签云。
+该组件有个可选参数，如下。
+```yml 主题配置文件
+tags:
+  # 限制数量（默认 30）
+  limit: 
+  # 多彩（默认 true）
+  # 通过下方的”开始颜色“和”结束颜色“来设置变化范围，由 Hexo 随机选择颜色。
+  colorful: 
+  # 开始颜色（默认 #3EA919）
+  start_color: 
+  # 结束颜色（默认 #156FD6）
+  end_color:
+```
+
+### avatar
+该组件用于显示头像。
+有 1 个可选参数，如下。
+```yml 主题配置文件
+# 方形头像
+avatar, 0: 
+# 圆形头像
+avatar, 1: round
+```
+
+### author_name
+用于显示作者名。
+有 1 个可选参数，如下。
+```yml 主题配置文件
+author_name: <文本>
+```
+
+### act_statistics
+用于同时显示归档、归类和标签的统计。
+有 3 个可选参数，如下。
+```yml 主题配置文件
+act_statistics:
+  # 归档页链接（默认 /archives/）
+  archive:
+  # 归类页链接（默认 /categories/）
+  categorie:
+  # 标签页链接（默认 /tags/）
+  tag:
+```
+
+### text
+一个文本组件，允许直接在其中编写 html。
+
+```yml 主题配置文件
+# 普通的文本
+text: Hello World
+# html
+text, 0: <div style="color:var(--main-color);font-size:16px;">
+  Hello world!
+  允许多行，注意缩进。
+  务必确保标签完整闭合！
+  </div>
+```
+
+### search
+创建一个用于搜索的按钮或输入框。
+有 1 个必填参数，如下。
+```yml 主题配置文件
+# 搜索按钮
+search: button
+# 输入框
+search, 0: input
+```
+
+### button
+用于创建一个按钮。
+有 1 个必填参数和 2 个可选参数，如下。
+```yml 主题配置文件
+button: <链接>, <文本>, <图标>
+```
+以下是示例。
+```yml 主题配置文件
+button: /
+button, 0: /, home
+button, 1: /, home, fa fa-home
+button, 2: /, , fa fa-home
+```
+
+### 其余无参数组件
+以下组件没有参数，直接使用即可。
+|type        |说明                          |
+|----------------|-------------------------------|
+|num_of_articles          |文章数目           |
+|total_word_count          |站点总字数           |
+|total_visitors          |总访客数           |
+|total_visits          |总访问量           |
+|runtime          |运行时长           |
+|last_update          |最后更新时间           |
+|social_link          |社交链接           |
 
 ## sticky_items
 `sticky_items` 是一个特殊的组件组，至多只能创建一个并且必须是`最后一个`组件组。
